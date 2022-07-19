@@ -13,7 +13,7 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{{route('comics.index')}}">See all elements</a></li>
-                  <li><a class="dropdown-item" href="#">Add new element</a></li>
+                  <li><a class="dropdown-item" href="{{route('comics.create')}}">Add new element</a></li>
                 </ul>
               </li>
             </ul>
