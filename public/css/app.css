@@ -12151,5 +12151,27 @@ fieldset:disabled .btn {
 
 a {
   text-decoration: none;
+  color: #00f;
+}
+
+a:hover {
+  color: #f0f;
+}
+
+#buttons {
+  display: flex;
+}
+
+#buttons button {
+  margin-right: 30px;
+}
+
+#buttons button a {
+  color: #fff;
+  font-weight: 600;
+}
+
+#buttons button a:hover {
+  color: #000;
 }
 

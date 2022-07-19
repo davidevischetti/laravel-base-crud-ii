@@ -38,15 +38,17 @@ class ComicsController extends Controller
     {
         $formData = $request->all();
 
-        $addComic = new Comic();
-        $addComic->title = $formData['title'];
-        $addComic->description = $formData['description'];
-        $addComic->thumb = $formData['thumb'];
-        $addComic->price = $formData['price'];
-        $addComic->series = $formData['series'];
-        $addComic->sale_date = $formData['sale_date'];
-        $addComic->type = $formData['type'];
-        $addComic->save();
+        // $addComic = new Comic();
+        // $addComic->title = $formData['title'];
+        // $addComic->description = $formData['description'];
+        // $addComic->thumb = $formData['thumb'];
+        // $addComic->price = $formData['price'];
+        // $addComic->series = $formData['series'];
+        // $addComic->sale_date = $formData['sale_date'];
+        // $addComic->type = $formData['type'];
+        // $addComic->save();
+
+        Comic::create($formData); // con protected $fillable nel model
 
         return redirect()->route('comics.index');
     }
@@ -68,9 +70,9 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        return view('admin.comics.edit', compact('comic'));
     }
 
     /**
@@ -80,9 +82,13 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comic $comic)
     {
-        //
+        $formData = $request->all();
+
+        $comic->update($formData);// con protected $fillable nel model
+
+        return redirect()->route('comics.show', ['comic' => $comic]);
     }
 
     /**
@@ -91,8 +97,10 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+
+        return redirect()->route('comics.index');
     }
 }
