@@ -6,6 +6,11 @@
         <div class="mb-3">
             <label class="form-label" for="title">title</label>
             <input class="form-control" type="text" name="title" id="title">
+            @error('title')
+                <div class="alert alert-danger" role="alert">
+                    {{$message}}
+                </div>
+            @enderror
         </div>
         <div class="mb-3">
             <label class="form-label" for="series">series</label>
@@ -18,10 +23,20 @@
         <div class="mb-3">
             <label class="form-label" for="price">price</label>
             <input class="form-control" type="text" name="price" id="price">
+            @error('price')
+            <div class="alert alert-danger" role="alert">
+                {{$message}}
+            </div>
+        @enderror
         </div>
         <div class="mb-3">
             <label class="form-label" for="description">description</label>
             <input class="form-control" type="text" name="description" id="description">
+            @error('description')
+            <div class="alert alert-danger" role="alert">
+                {{$message}}
+            </div>
+        @enderror
         </div>
         <div class="mb-3">
             <label class="form-label" for="thumb">thumb</label>
