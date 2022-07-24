@@ -22,13 +22,26 @@
 
     <div id="buttons">
         <button class="btn btn-success"><a href="{{route('comics.edit', ['comic' => $comic])}}">Edit</a></button>
+        <button class="btn btn-danger js-delete"><a>Delete</a></button>
 
-        <form action="{{route('comics.destroy', ['comic'=> $comic])}}" method="post">
+        {{-- <form action="{{route('comics.destroy', ['comic'=> $comic])}}" method="post">
             @csrf
             @method('delete')
-            <button class="btn btn-danger"><a>Delete</a></button>
-        </form>
+            <button class="btn btn-danger js-delete"><a>Delete</a></button>
+        </form> --}}
 
     </div>
+
+    <section class="overlay d-none">
+
+            <form class="popup" action="{{route('comics.destroy', ['comic'=> $comic])}}" method="post">
+            @csrf
+            @method('delete')
+            <h4>Vuoi eliminare questo elemento?</h4>
+            <button type="submit" class="btn btn-success js-yes">SI</button>
+            <button type="button" class="btn btn-danger js-no">NO</button>
+            </form>
+
+    </section>
 
 @endsection
