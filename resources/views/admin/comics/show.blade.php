@@ -1,6 +1,7 @@
 @extends('../admin/templates.base')
 
 @section('content')
+    <a href="{{url()->previous()}}" class="btn btn-primary">Back</a>
     <table class="table">
         <thead>
         <tr>
