@@ -12,9 +12,19 @@ class ComicsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $comics = Comic::paginate(4);
+        $searchTerms = $request->query('q');
+
+        if ($searchTerms) {
+            $comics = Comic::where('title', 'LIKE', $searchTerms)
+                            ->orWhere('series', 'LIKE', $searchTerms)
+                            ->paginate(4);
+            // dump($comics->toArray());
+        } else {
+            $comics = Comic::paginate(4);
+        }
+
         return view('admin.comics.index', compact('comics'));
     }
 
